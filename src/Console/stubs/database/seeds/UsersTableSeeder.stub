@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class UsersTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \{{namespace}}\User::create([
+        	'name' => 'Administrador',
+        	'email' => 'admin@skeleton.org',
+        	'password' => bcrypt('password'),
+        	'user_type_id' => 1
+        ]);
+    }
+}

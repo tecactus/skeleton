@@ -1,0 +1,53 @@
+<?php
+
+namespace {{namespace}}\DataTables;
+
+use Tecactus\Skeleton\DataTables\DataTable;
+use {{namespace}}\User;
+use {{namespace}}\UserType;
+
+class UserDataTable extends DataTable
+{
+    protected $filename = 'usuarios';
+
+    protected $modelClass = User::class;
+
+    protected $jsAsyncApp = 'UserFormApp';
+
+    protected $jsCreateButonAction = 'displayModal';
+
+    protected $jsShowButonAction = 'loadUser';
+
+    protected $editColumns = [
+        'active',
+    ];
+
+    protected $rawColumns = [
+        'active'
+    ];
+
+    protected $displayColumns = [
+        ['data' => 'id', 'name' => 'id', 'title' => 'id'],
+        ['data' => 'email', 'name' => 'email', 'title' => 'email'],
+        ['data' => 'name', 'name' => 'name', 'title' => 'nombre'],
+        ['data' => 'active', 'name' => 'active', 'title' => 'activo'],
+        ['data' => 'created_at', 'name' => 'created_at', 'title' => 'registrado el'],
+        ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'actualizado el'],
+        ['data' => 'action', 'name' => 'action', 'title' => 'acciones', 'orderable' => false, 'searchable' => false],
+    ];
+
+    /**
+     * Get the query object to be processed by dataTables.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
+     */
+    public function getQuery()
+    {
+        return $this->modelClass::where('user_type_id', UserType::USER)->select();
+    }
+
+    public function editActiveColumn($row)
+    {
+        return $row->active ? '<span class="label label-success">si</span>' : '<span class="label label-warning">no</span>';
+    }
+}

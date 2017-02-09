@@ -1,0 +1,79 @@
+<?php
+
+namespace {{namespace}}\Http\Controllers;
+
+use {{namespace}}\UserType;
+use Illuminate\Http\Request;
+use Tecactus\Skeleton\Foundation\Http\Requests\SingleNameRequest;
+use {{namespace}}\DataTables\UserTypeDataTable;
+
+class UserTypesController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(UserTypeDataTable $dataTable)
+    {
+        return $dataTable->render('skeleton::datatables.index', [
+            'panelTitle' => 'Tipos de usuario',
+            'jsAsyncApp' => $dataTable->getJsAsyncApp()
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(SingleNameRequest $request)
+    {
+        $userType = UserType::create($request->all());
+        return response()->json($userType);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{namespace}}\UserType  $userType
+     * @return \Illuminate\Http\Response
+     */
+    public function show(UserType $userType)
+    {
+        return $userType;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \{{namespace}}\UserType  $userType
+     * @return \Illuminate\Http\Response
+     */
+    public function update(SingleNameRequest $request, UserType $userType)
+    {
+        $data = [
+            'name' =>  $request->name,
+        ];
+        $userType->update($data);
+        return response()->json($userType);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{namespace}}\UserType  $userType
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(UserType $userType)
+    {
+        try {
+            $userType->delete();
+            return response()->json();
+        } catch (Exception $e) {
+            return response()->json('', 500);
+        }
+    }
+}

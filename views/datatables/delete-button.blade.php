@@ -1,0 +1,1 @@
+<a href="javascript:void(0)" class="btn btn-xs btn-danger" onClick="window.Skeleton.dtDeleteAction('{{ $action }}')" title="eliminar"><i class="fa fa-trash"></i></a>

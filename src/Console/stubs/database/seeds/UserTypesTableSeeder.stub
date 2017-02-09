@@ -1,0 +1,17 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class UserTypesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \{{namespace}}\UserType::create(['name' => 'Administrador']);
+        \{{namespace}}\UserType::create(['name' => 'Usuario']);
+    }
+}

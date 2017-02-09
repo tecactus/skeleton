@@ -1,0 +1,46 @@
+<?php
+
+namespace {{namespace}}\Http\Controllers\Auth;
+
+use {{namespace}}\Http\Controllers\Controller;
+use Tecactus\Skeleton\Foundation\Auth\ActivatesAccount;
+
+class ActivateAccountController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Activation Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles user's account activation for the application and
+    | properly redirecting them. The controller uses a trait to conveniently
+    | provide its functionality to your applications.
+    |
+    */
+
+    use ActivatesAccount;
+
+    /**
+     * Where to redirect users after activation.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Where to redirect guests after activation.
+     *
+     * @var string
+     */
+    protected $redirectGuest = '/login';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => 'sendAccountActivationLink']);
+    }
+}

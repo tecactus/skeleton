@@ -1,0 +1,13 @@
+<?php
+
+namespace {{namespace}}\DataTables;
+
+use Tecactus\Skeleton\DataTables\DataTable;
+use {{namespace}}\UserType;
+
+class UserTypeDataTable extends DataTable
+{
+    protected $filename = 'tipos_de_usuario';
+
+    protected $modelClass = UserType::class;
+}
