@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyRootNamespaceDataTables;
+
+use Tecactus\Skeleton\DataTables\DataTable;
+use DummyRootNamespaceDummyClass;
+
+class DummyClassDataTable extends DataTable
+{
+    protected $filename = 'archivo';
+
+    protected $modelClass = DummyClass::class;
+}

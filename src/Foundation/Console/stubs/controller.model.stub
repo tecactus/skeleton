@@ -1,0 +1,101 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use Illuminate\Http\Request;
+use Tecactus\Skeleton\Foundation\Http\Requests\SingleNameRequest;
+use DummyRootNamespaceHttp\Controllers\Controller;
+use DummyFullDataTableClass;
+
+class DummyClass extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(DummyDataTableClass $dataTable)
+    {
+        return $dataTable->render('skeleton::datatables.index', [
+            'panelTitle' => 'DummyModelClass',
+            'jsAsyncApp' => $dataTable->getJsAsyncApp()
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(SingleNameRequest $request)
+    {
+        $record = DummyModelClass::create($request->all());
+        return response()->json($record);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Response
+     */
+    public function show(DummyModelClass $DummyModelVariable)
+    {
+        return $DummyModelVariable;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(DummyModelClass $DummyModelVariable)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Response
+     */
+    public function update(SingleNameRequest $request, DummyModelClass $DummyModelVariable)
+    {
+        $data = [
+            'name' =>  $request->name,
+        ];
+        $DummyModelVariable->update($data);
+        return response()->json($DummyModelVariable);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(DummyModelClass $DummyModelVariable)
+    {
+        try {
+            $DummyModelVariable->delete();
+            return response()->json();
+        } catch (Exception $e) {
+            return response()->json('', 500);
+        }
+    }
+}

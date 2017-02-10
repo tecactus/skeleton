@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Config;
 use Tecactus\Skeleton\Observers\UserObserver;
 use Tecactus\Skeleton\Auth\Activation\ActivationTokenRepository;
 use Tecactus\Skeleton\Console\InstallCommand;
+use Tecactus\Skeleton\Foundation\Console\ModelMakeCommand;
+use Tecactus\Skeleton\Foundation\Console\ControllerMakeCommand;
+use Tecactus\Skeleton\Foundation\Console\DatatableMakeCommand;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 
@@ -19,6 +22,9 @@ class SkeletonServiceProvider extends ServiceProvider
      */
     protected $commands = [
         InstallCommand::class,
+        ModelMakeCommand::class,
+        ControllerMakeCommand::class,
+        DatatableMakeCommand::class,
     ];
 
     /**
