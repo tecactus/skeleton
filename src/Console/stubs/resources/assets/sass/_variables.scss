@@ -1,0 +1,66 @@
+
+// Body
+$body-bg: #FFFFFF;
+
+$gray-base: #8492A6;
+$gray-darker: #99A9BF;
+$gray-dark: #C0CCDA;
+$gray: #D3DCE6;
+$gray-light: #E5E9F2;
+$gray-lighter: #EFF2F7;
+
+// Borders
+$skeleton-border-color: #C0CCDA;
+$list-group-border: $skeleton-border-color;
+$navbar-default-border: $skeleton-border-color;
+$panel-default-border: $skeleton-border-color;
+$panel-inner-border: $skeleton-border-color;
+
+// Brands
+$brand-primary: #20a0ff;
+$brand-info: #50BFFF;
+$brand-success: #13ce66;
+$brand-warning: #f7ba2a;
+$brand-danger: #ff4949;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Inverse navbar
+$navbar-inverse-bg: #20A0FF;
+$navbar-inverse-border: $navbar-inverse-bg;
+$navbar-inverse-toggle-hover-bg: $navbar-inverse-bg;
+$navbar-inverse-toggle-border-color: #FFFFFF;
+
+// Scaffolding
+$text-color: #5E6D82;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+// Forms
+$input-color: #1F2D3D;
+
+// Dropdowns
+$dropdown-link-color: $text-color;
+$dropdown-link-hover-color: $text-color;
+
+// Panels
+$panel-default-text: $text-color;
+
+// Code
+$pre-color: $text-color;

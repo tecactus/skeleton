@@ -63,14 +63,14 @@ class DataTable extends YajraDataTable
                         ->eloquent( $this->query() );
                         
         foreach ($this->addColumns as $column) {
-            $fnName = 'add' . ucfirst(camel_case($column)) . 'Column';
+            $fnName = 'add' . $this->parseColumnName($column) . 'Column';
             $ref = $this;
             $datatables = $datatables
                 ->addColumn($column, function ($row) use ($fnName, $ref) { return call_user_func([$ref, $fnName], $row); });
         }
 
         foreach ($this->editColumns as $column) {
-            $fnName = 'edit' . ucfirst($column) . 'Column';
+            $fnName = 'edit' . $this->parseColumnName($column) . 'Column';
             $ref = $this;
             $datatables = $datatables
                 ->editColumn($column, function ($row) use ($fnName, $ref) { return call_user_func([$ref, $fnName], $row); });
@@ -79,6 +79,28 @@ class DataTable extends YajraDataTable
         $datatables = $datatables->rawColumns(array_merge(['action'], $this->rawColumns));
 
         return $datatables;
+    }
+
+    private function  parseColumnName($columnName)
+    {
+        $delimiter = '';
+
+        \Log::info($columnName);
+
+        if (str_contains($columnName, '.')) {
+            $delimiter = '.';
+        }
+        if (str_contains($columnName, '_')) {
+            $delimiter = '_';
+        }
+
+        if (empty($delimiter)) {
+            return $columnName;
+        }
+
+        $words = explode($delimiter, $columnName);
+        $words = array_map(function($word) { return ucwords($word); }, $words);
+        return implode('', $words);
     }
 
     /**

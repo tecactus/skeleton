@@ -1,0 +1,26 @@
+// eleme-io
+.el-select.skeleton-custom {
+	display: inline !important;
+}
+
+.el-date-editor.el-input.skeleton-custom {
+	width: 100% !important;
+}
+
+// datatables
+.dataTables_length {
+	margin-top: 10px;
+}
+
+.datatable-container {
+	padding: 10px;
+}
+
+// ajusta estilo de logo en navbar
+.navbar-brand {
+    padding: 6px 15px;
+}
+
+.navbar-brand > img {
+    max-height: 40px;
+}
