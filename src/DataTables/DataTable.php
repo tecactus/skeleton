@@ -85,8 +85,6 @@ class DataTable extends YajraDataTable
     {
         $delimiter = '';
 
-        \Log::info($columnName);
-
         if (str_contains($columnName, '.')) {
             $delimiter = '.';
         }
