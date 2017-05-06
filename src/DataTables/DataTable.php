@@ -86,10 +86,12 @@ class DataTable extends YajraDataTable
         $delimiter = '';
 
         if (str_contains($columnName, '.')) {
-            $delimiter = '.';
+            $columnName = str_replace('.', '&%$', $columnName);
+            $delimiter = '&%$';
         }
         if (str_contains($columnName, '_')) {
-            $delimiter = '_';
+            $columnName = str_replace('_', '&%$', $columnName);
+            $delimiter = '&%$';
         }
 
         if (empty($delimiter)) {
